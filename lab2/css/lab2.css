@@ -1,0 +1,30 @@
+.my-primary {
+    background-color: #1A237E;
+    color: white;
+}
+
+main {
+    margin-top: 15px;
+}
+
+.brand {
+    margin-left: 10px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 40px;
+}
+footer {
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.my-footer-text {
+    margin-top: 0.5em;
+}

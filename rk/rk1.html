@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Билет #25</title>
+    <script>
+        function __getCurrentDiff(arr_d, i) {
+            return arr_d[i] - arr_d[arr_d.length - i - 1];
+        }
+        function calculateMaxDiff(arr_d) {
+            maxDiff = {num : __getCurrentDiff(arr_d, 0), l : 0, r : arr_d.length - 1}
+            for(i = 0; i < arr_d.length / 2; i++) {
+                current = __getCurrentDiff(arr_d, i);
+                if(maxDiff.num < current)
+                    maxDiff = {num : current, l : i, r : arr_d.length - i - 1};
+            }
+            return maxDiff;
+        }
+        function filter() {
+            keyEvent = event;
+            keyPressed = keyEvent.which;
+            console.log(keyPressed)
+            if((keyPressed < 48 || keyPressed > 57)
+            && keyPressed != 32 && keyPressed != 8)
+                if(keyEvent.preventDefault)
+                    keyEvent.preventDefault();
+        }
+        function to_ints_selective(s_arr) {
+            d_arr = []
+            s_arr.forEach(string => {
+                if(string != "")
+                    d_arr.push(parseInt(string));
+            })
+            return d_arr;
+        }
+        function calculateHandler() {
+            s_arr = document.getElementById("numbers").value.split(" ");
+            d_arr = to_ints_selective(s_arr);
+            if(d_arr.length < 2) {
+                alert("Введите не менее двух чисел!");
+                return;
+            }
+            result = calculateMaxDiff(d_arr)
+            document.getElementById("output").innerHTML = 
+                "Результат: " + result.num + "; Элементы: " + result.l + ", " + result.r + ";";
+        }
+    </script>
+</head>
+<body style="text-align: center;">
+    <form>
+        <h2>Гунин Игорь Павлович</h1>
+        <h2>ИУ6-31Б</h2>
+        <h1>Билет #25</h1>
+        <h3>Дан массив чисел arr_d. Определить<br>
+            максимальную разность элементов по схеме: первый - последний, второй - предпоследний...<br>
+            и вывести на печать сумму и номера элементов.</h3>
+        <h1>Введите числа через пробел:</h1>
+        <input type="text" id="numbers" onkeydown="filter()" style="width: 400px" value="6 5 4 3 2 1"/><br><hr>
+        <input type="button" onclick="calculateHandler()" style="width: 200px;" value="Рассчитать"/>
+    </form>
+    <h1 style="color: green;" id="output"></h1>
+
+</body>
+</html>

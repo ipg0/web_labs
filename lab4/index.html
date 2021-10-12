@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="script.js"></script>
+    <title>Четвертая лаба</title>
+</head>
+<body>
+    <div>
+        <h1>Оформление заказа</h1>
+        <div style="margin-left: 60px; margin-right: 60px;">
+            <table><tr>
+                <td style="vertical-align: top;">
+                    <h2>Добавить по названию:</h2>
+                    <form>
+                        <label for="pname">Наименование</label><br>
+                        <input type="text" id="pname" name="pname"><br>
+                        <hr style="margin-left: 10px; width: 165px;">
+                        <label for="price">Стоимость</label><br>
+                        <input type="number" id="price" name="price"><br>
+                        <hr style="margin-left: 10px; width: 165px;">
+                        <input style="width: 185px;" type="button" onclick="addItemToCart()" value="Добавить">
+                    </form>
+                </td>
+                <td style="vertical-align: top;">
+                    <div style="margin-left: 50px;">
+                        <h2>Добавить из каталога:</h2>
+                        <table id="productTable" style="text-align:center; border: solid black 2px;" rules="all">
+                            <tr>
+                                <td colspan="2">
+                                    Каталог
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 400px">
+                                    <strong>Наименование</strong>
+                                </td>
+                                <td style="width: 100px">
+                                    <strong>Стоимость</strong>
+                                </td>
+                            </tr>
+                        </table>
+                        <script>
+                            loadProducts(document.getElementById("productTable"));
+                        </script>
+                    </div>
+                </td>
+                <td style="vertical-align: top;">
+                    <div style="margin-left: 50px;">
+                        <h2>Ваша корзина:</h2>
+                        <table id="cart" style="text-align:center; border: solid black 2px;" rules="all">
+                            <tr>
+                                <td colspan="2">
+                                    <strong>Корзина</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 400px">
+                                    <strong>Наименование</strong>
+                                </td>
+                                <td style="width: 100px">
+                                    <strong>Стоимость</strong>
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="text-align: center; width: 507px;">
+                            <button style="width: 100px; margin-top: 10px;" onclick="calculatePrice()">Рассчитать</button>
+                        </div>
+                        <div style="margin-left: 20px; font-size: larger; color: darkgreen;" id="priceOutput"></div>
+                    </div>
+                </td>
+            </tr></table>
+        </div>
+    </div>
+</body>
+</html>
