@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICS6 Bootstrap</title>
+    <link href="src/bootstrap.min.css" rel="stylesheet">
+    <link href="css/lab2_pt1.css" rel="stylesheet">
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            margin-bottom: 40px;
+        }
+
+        main {
+            margin-top: 15px;
+        }
+
+        footer {
+            height: 40px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .my-primary {
+            background-color: #1A237E;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark my-primary">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="row">
+            <div class="col-4">
+                <img src="src/avatar.jpg" alt="avatar" width="150" height="150">
+            </div>
+            <div class="col-8">
+                <p>Любой текст</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <form style="padding: 10px">
+                    <label for="fnameInput" class="control-label">Имя</label>
+                    <input type="text" name="fname" id="fnameInput" class="form-control" placeholder="Иван">
+                    <label for="lnameInput" class="control-label">Фамилия</label>
+                    <input type="text" name="lname" id="lnameInput" class="form-control" placeholder="Иванов">
+                    <div class="form-check">
+                        <input type="radio" id="mSelect" name="gender" value="male" class="form-check-input">
+                        <label for="mSelect" class="form-check-label">М</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="fSelect" name="gender" value="female" class="form-check-input">
+                        <label for="fSelect" class="form-check-label">Ж</label>
+                    </div>
+                    <label for="groupInput" class="control-label">Группа</label>
+                    <input type="text" name="group" id="groupInput" class="form-control" placeholder="ИУ6-31Б">
+                    <input type="submit" class="btn btn-primary" value="Зарегистрироваться">
+                </form>
+            </div>
+            <div class="col-4">
+                <table class="table table-bordered table-str" style="width: auto;">
+                    <tr class="thead-dark">
+                        <th colspan="2" style="width: 400px;">Начало - окончание</th>
+                        <th style="width: 400px;">Название</th>
+                    </tr>
+                    <tr>
+                        <td>8:30</td>
+                        <td>10:05</td>
+                        <td rowspan="2" style="vertical-align: middle;"">ЯИП (лаб)</td>
+                    </tr>
+                    <tr>
+                        <td>10:15</td>
+                        <td>11:50</td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td>13:35</td>
+                        <td>ЯИП (лек)</td>
+                    </tr>
+                    <tr>
+                        <td>13:50</td>
+                        <td>15:25</td>
+                        <td>Электротехника (лек)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>
+                    В этом семестре надо попробовать сдавать лабораторные работы <i>вовремя</i>, <s>а не как
+                        обычно.</s><br />
+                    При формировании своего подхода к лабам <i>самое главное - <b>не забыть про них в начале
+                            семестра,</b></i><br />
+                    <small>чтобы потом вспомнить только за два дня до экзамена.</small>
+                </p>
+                <p class="badColors">
+                    В этом тексте отвратительно подобраны цвета, поэтому на него больно смотреть.<br />
+                    <i>Если смотреть дольше, станет еще больнее, так что давайте перестанем его писать.</i>
+                </p>
+                <p class="decentColors;">
+                    Здесь цвета уже подобраны поприятнее, поэтому можно было бы продолжить так,<br />
+                    но давайте сделаем немного по другому.
+                </p>
+                <p class="goodColors">
+                    Вот такие цвета уже <i>совсем приятно видеть на своем экране</i>.<br />
+                    <span class="smallTxt">А еще мы можем </span>
+                    <span class="largeTxt">поменять размер шрифта,</span>
+                    но <u>давайте не будем этого делать</u>.
+                </p>
+                <p>
+                    Также в HTML можно вставлять формулы&#58;<br />
+                    (<var>a</var> + <var>b</var>)<sup>2</sup> = <var>a</var><sup>2</sup> + 4<var>ac</var> +
+                    <var>b</var><sup>2</sup><br />
+                    Это была алгебраическая формула. Также можно вставить химическую&#58;<br />
+                    C<sub>2</sub>H<sub>5</sub>OH (этиловый спирт).
+                </p>
+                <p>Также можно написать немного кода. Для этого в HTML тоже существует специальный тег&#58;</p>
+                <pre>
+            function recuriveFactorial(n) {
+                if(n == 0)
+                    return 1;
+                else
+                    return n * recursiveFactorial(n - 1);
+            }
+                </pre>
+                <p>
+                    Это функция на JavaScript, которая вычисляет факториал рекурсивным методом.
+                </p>
+                <p class="conclusion">Вывод: я научился форматировать текст с помощью HTML. Спасибо за внимание.</p>
+            </div>
+        </div>
+    </main>
+    <footer class="my-primary">
+        <div class="container">
+            <p class="footer-text">Footer</p>
+        </div>
+    </footer>
+</body>
+
+</html>

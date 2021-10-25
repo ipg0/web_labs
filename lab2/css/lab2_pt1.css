@@ -1,0 +1,26 @@
+.badColors {
+    color: red;
+    background-color: blue;
+}
+
+.decentColors {
+    background-color: #77216F;
+    color: white
+}
+
+.goodColors {
+    background-color: #ffa31a;
+    color: #292929;
+}
+
+.smallTxt {
+    font-size: small;
+}
+
+.largeTxt {
+    font-size: larger;
+}
+
+.conclusion {
+    color: #77216F;
+}

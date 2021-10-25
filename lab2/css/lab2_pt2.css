@@ -1,0 +1,20 @@
+.table {
+    display: table;
+    border: 3px solid black;
+    width: auto;
+}
+
+.row {
+    display: table-row;
+    border: 1px solid black;
+}
+
+.cell {
+    display: table-cell;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.top {
+    border-bottom: 3px solid black;
+}
