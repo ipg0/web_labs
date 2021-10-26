@@ -42,7 +42,7 @@ class Lab5Test2 < MiniTest::Test
     arr.each do |string|
       newstr = ''
       string.split.each.with_index do |word, index|
-        newstr += "#{determ_correct(word, index)}"
+        newstr += determ_correct(word, index)
       end
       expected << newstr.rstrip
     end
