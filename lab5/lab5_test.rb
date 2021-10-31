@@ -1,19 +1,7 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require './lab5_1'
 require './lab5_2'
-
-EPS = 0.0000001
-
-# Testing calculator
-class Lab5Test1 < MiniTest::Test
-  def test_calculator
-    assert (calculate_expression(1, 1, 1) - 1.2750071995370522).abs < EPS
-    assert (calculate_expression(1, 2, 1) - 1.6555285214851863).abs < EPS
-    assert (calculate_expression(1, 2, 3) - 3.8467837076079340).abs < EPS
-  end
-end
 
 # Testing string corrector
 class Lab5Test2 < MiniTest::Test
@@ -38,15 +26,9 @@ class Lab5Test2 < MiniTest::Test
   end
 
   def generate_expected_output(arr)
-    expected = []
-    arr.each do |string|
-      newstr = ''
-      string.split.each.with_index do |word, index|
-        newstr += determ_correct(word, index)
-      end
-      expected << newstr.rstrip
+    arr.map do |string|
+      string.split.each.with_index { |word, index| determ_correct(word, index) }.join.rstrip
     end
-    expected
   end
 
   def test_random_strings
