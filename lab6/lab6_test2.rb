@@ -2,7 +2,7 @@
 
 require 'minitest/autorun'
 require './lab6_2'
-require './lab6_main2'
+require './lab6_ui2'
 
 # Testing neibr
 class Lab6Test2 < MiniTest::Test

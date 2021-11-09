@@ -1,0 +1,5 @@
+Naming/RescuedExceptionsVariableName:
+  PreferredName: "err"
+
+AllCops:
+  NewCops: enable

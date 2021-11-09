@@ -24,9 +24,9 @@ def test2
   end
 end
 
-def main
+def init_ut
   test1
   test2
 end
 
-main
+init_ui
