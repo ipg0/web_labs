@@ -4,12 +4,18 @@
 class CalcController < ApplicationController
   def input; end
 
+  def expr(arr, i)
+    arr[i].to_f / arr[arr.length / 2 + i]
+  end
+
   def max(arr)
     half = arr.length / 2
-    result = (0...half).max { |i| arr[i].to_f / arr[half + i] }
+    result = (0...half).max do |i, j|
+      expr(arr, i) <=> expr(arr, j)
+    end
     {
-      first: result,
-      second: half + result,
+      first: 1 + result,
+      second: 1 + half + result,
       value: arr[result].to_f / arr[half + result]
     }
   end

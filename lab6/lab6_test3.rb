@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require './lab6_2'
-require './lab6_ui2'
+require './lab6_3'
+require './lab6_ui3'
 
 # Testing neibr
 class Lab6Test2 < MiniTest::Test

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lab6_2'
+require './lab6_3'
 
 def generate_points(number)
   Array.new(number) do
@@ -24,7 +24,7 @@ def test2
   end
 end
 
-def init_ut
+def init_ui
   test1
   test2
 end
