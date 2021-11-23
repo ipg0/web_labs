@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-$expr = Enumerator.new do |result|
+Expr = Enumerator.new do |result|
   k = 1
   loop do
     result << (-1.0)**(k - 1) / k
@@ -8,6 +8,7 @@ $expr = Enumerator.new do |result|
   end
 end
 
-$expr.define_singleton_method(:approx) do |eps|
-  take_while { |num| num.abs >= eps }.sum
+def approx(eps)
+  p Expr
+  Expr.take_while { |num| num.abs >= eps }.sum
 end

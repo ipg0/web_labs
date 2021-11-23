@@ -7,7 +7,7 @@ require './lab6_2'
 class Lab6Test2 < MiniTest::Test
   def test_series
     [1e-2, 1e-3, 1e-4, 1e-5, 1e-6].each do |eps|
-      assert ($expr.approx(eps) - Math.log(2)).abs < eps
+      assert (approx(eps) - Math.log(2)).abs < eps
     end
   end
 end

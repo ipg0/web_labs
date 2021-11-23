@@ -1,12 +1,12 @@
 class LuckyNumsController < ApplicationController
   def input; end
 
-  def first3(n)
-    n / 100_000 + n / 10_000 % 10 + n / 1_000 % 10
-  end
-
   def last3(n)
     n / 100 % 10 + n / 10 % 10 + n % 10
+  end
+
+  def first3(n)
+    last3(n / 1000)
   end
 
   def lucky_numbers(range)
@@ -15,11 +15,11 @@ class LuckyNumsController < ApplicationController
   end
 
   def view
-    from = params['from'] || 0
-    to = params['to'] || 999_999
+    @from = params['from'] || 0
+    @to = params['to'] || 999_999
     params.each do |key, value|
       Rails.logger.warn "Param #{key}: #{value}"
     end
-    @rows = lucky_numbers(from.to_i..to.to_i)
+    @rows = lucky_numbers(@from.to_i..@to.to_i)
   end
 end
