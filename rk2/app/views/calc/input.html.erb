@@ -1,0 +1,13 @@
+<h1>Билет 34.</h1>
+<p>
+    Дан массив чисел arr_o с размером N.<br>
+    Определить максимальное частное элементов по схеме: А<sub>0</sub> / A<sub>N/2</sub>, А<sub>1</sub>/A<sub>N/2+1</sub>, …, А<sub>N/2 — 1</sub> / A<sub>N - 1</sub><br>
+    Вывести на печать значения частного и номера элементов.
+</p>
+
+<h1>Введите массив целых чисел через запятую</h1>
+
+<%= form_tag 'calc/output', class: "col-2", method: "post", style: "padding: 50px" do |f| %>
+    <%= text_field_tag "array_input", "1, 2, 3, 4", class: "form_control col-12", required: true %>
+    <%= button_tag "Подтвердить", class: "btn btn-primary col-12", style: "margin-top: 10px" %>
+<% end %>
