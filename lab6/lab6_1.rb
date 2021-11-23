@@ -11,7 +11,3 @@ def calculate_series(eps)
   sum += (next_element = expr(index += 1)) while next_element.abs > eps
   sum
 end
-
-def calculate_series_enum(eps)
-  (1..(1 / eps)).map { |index| expr index }.sum
-end

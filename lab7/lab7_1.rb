@@ -6,26 +6,22 @@ def longest_common_prefix(fstr, gstr)
   end.join
 end
 
-def compose_h(path)
-  File.write("#{path}/H",
+def compose_h(filename_f, filename_g, filename_h)
+  File.write(filename_h,
              longest_common_prefix(
-               File.open("#{path}/F").read,
-               File.open("#{path}/G").read
+               File.open(filename_f).read,
+               File.open(filename_g).read
              ))
 end
 
-def write_f(path)
-  File.write("#{path}/F", yield('Contents of F: '))\
+def write_file(filename, contents)
+  File.write(filename, contents)
 end
 
-def write_g(path)
-  File.write("#{path}/G", yield('Contents of G: '))
-end
-
-def execute(path, &block)
-  write_f(path, &block)
-  write_g(path, &block)
-  compose_h path
+def execute(path)
+  write_file("#{path}/F", yield('Contents of F: '))
+  write_file("#{path}/G", yield('Contents of G: '))
+  compose_h("#{path}/F", "#{path}/G", "#{path}/H")
 rescue StandardError => err
   puts "An error occured: #{err.message}!"
 end

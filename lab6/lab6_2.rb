@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
-Point = Struct.new(:x, :y)
+$expr = Enumerator.new do |result|
+  k = 1
+  loop do
+    result << (-1.0)**(k - 1) / k
+    k += 1
+  end
+end
 
-def neibr(point, eps = 1e-9)
-  (point.y - yield(point.x)).abs < eps
+$expr.define_singleton_method(:approx) do |eps|
+  take_while { |num| num.abs >= eps }.sum
 end

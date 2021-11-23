@@ -4,12 +4,13 @@ require 'minitest/autorun'
 require './lab7_1'
 
 DIR = '../.sandbox'
+CHARS = ('a'..'z').to_a
 
 # testing execution
 class Lab7Test1 < MiniTest::Test
   def test_write
-    write_f(DIR) { |_| 'F test' }
-    write_g(DIR) { |_| 'G test' }
+    write_file("#{DIR}/F", 'F test')
+    write_file("#{DIR}/G", 'G test')
     assert File.open("#{DIR}/F").read == 'F test'
     assert File.open("#{DIR}/G").read == 'G test'
   end
@@ -30,11 +31,11 @@ class Lab7Test1 < MiniTest::Test
   end
 
   def generate_random
-    (0...rand(10)).map { ('a'..'z').to_a[rand(26)] }.join
+    CHARS.sample(rand(10)).join
   end
 
   def generate_with_common_prefix
-    pref = (0...rand(10)).map { ('a'..'z').to_a[rand(26)] }.join
+    pref = CHARS.sample(rand(10)).join
     [pref + generate_random, pref + generate_random]
   end
 
