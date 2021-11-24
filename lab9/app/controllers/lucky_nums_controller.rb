@@ -11,12 +11,12 @@ class LuckyNumsController < ApplicationController
 
   def lucky_numbers(range)
     range.select { |n| first3(n) == last3(n) }
-         .map.with_index { |n, i| [i + 1, format('%06d', n), first3(n)] }
+         .map.with_index { |n, i| [i, format('%06d', n), first3(n)] }
   end
 
   def view
     @from = params['from']
     @to = params['to']
-    @rows = lucky_numbers(@from.to_i..@to.to_i)
+    @result = lucky_numbers(@from.to_i..@to.to_i)
   end
 end

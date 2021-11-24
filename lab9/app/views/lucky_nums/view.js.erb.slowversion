@@ -1,0 +1,13 @@
+section.style = '';
+
+function addRow(entry) {
+    if(entry[0] % 10000 == 0)
+        console.log('PROCESSING ' + entry[0]);
+    let newRow = table.insertRow(-1);
+    newRow.insertCell(0).innerHTML = entry[0];
+    newRow.insertCell(1).innerHTML = entry[1];
+    newRow.insertCell(2).innerHTML =entry[2];
+
+}
+
+<%= raw @result %>.forEach(entry => addRow(entry));

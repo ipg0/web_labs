@@ -1,32 +1,13 @@
-document.getElementById('results').innerHTML = 
-`<h1>Results:</h1>
-<table id="results" class="table table-striped">
-    <thead>
-        <tr scope="row">
-            <th scope="col">
-                Index
-            </th>
-            <th scope="col">
-                Number
-            </th>
-            <th scope="col">
-                Three Digit Sum
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <%- @rows.each do |cols| -%>    
-        <tr scope="row">
-            <th scope="col">
-                <%= cols[0] %>
-            </th>
-            <td>
-                <%= cols[1] %>
-            </td>
-            <td>
-                <%= cols[2] %>
-            </td>
-        </tr>
-        <%- end -%>
-    </tbody>
-</table>`
+section.style = '';
+
+table.innerHTML = `
+<% @result.each do |entry| %>
+    <tr scope="row">
+        <td scope="col"><%= entry[0] %></td>
+        <td scope="col"><%= entry[1] %></td>
+        <td scope="col"><%= entry[2] %></td>
+    </tr>
+<% end %>
+`
+
+spinner.style = 'display: none';

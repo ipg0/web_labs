@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'clear_table'%>
+<%= javascript_pack_tag 'spinner'%>
 <style>
     input {
         margin-bottom: 10px;
@@ -9,7 +11,40 @@
     <%= number_field_tag('from', 0, class: "form-control", min: 0, max: 999999, required: true) %>
     <%= label_tag "to", "To" %>
     <%= number_field_tag('to', 999999, class: "form-control", min: 0, max: 999999, required: true) %>
-    <%= submit_tag("Calculate Lucky Numbers!", class: "btn btn-primary") %>
+    <div class="btn-group" role="group">
+        <%= submit_tag("Calculate Lucky Numbers!", class: "btn btn-primary", id: "submit-btn") %>
+        <input type="button" value="Clear" class="btn btn-secondary" id="clear-btn">
+    </div>
 <% end %>
 
-<div id="results"></div>
+<div id="spinner" class="text-center" style="display: none">
+    <div class="spinner-border" style="margin-top: 50px" role="status">
+    </div>
+</div>
+
+<div id="result-section" style="display: none">
+    <h1>Results:</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr scope="row">
+                <th scope="col">
+                    Index
+                </th>
+                <th scope="col">
+                    Number
+                </th>
+                <th scope="col">
+                    Three Digit Sum
+                </th>
+            </tr>
+        </thead>
+        <tbody id="result-table">
+        </tbody>
+    </table>
+</div>
+
+<script>
+    const section = document.getElementById('result-section');
+    const table = document.getElementById('result-table');
+    const spinner = document.getElementById('spinner');
+</script>
