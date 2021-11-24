@@ -1,5 +1,6 @@
-<h1>Lucky Numbers from <%= @from %> to <%= @to %></h1>
-<table class="table table-striped">
+document.getElementById('results').innerHTML = 
+`<h1>Results:</h1>
+<table id="results" class="table table-striped">
     <thead>
         <tr scope="row">
             <th scope="col">
@@ -28,5 +29,4 @@
         </tr>
         <%- end -%>
     </tbody>
-
-</table>
+</table>`
