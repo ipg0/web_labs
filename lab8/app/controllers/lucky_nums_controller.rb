@@ -17,9 +17,6 @@ class LuckyNumsController < ApplicationController
   def view
     @from = params['from'] || 0
     @to = params['to'] || 999_999
-    params.each do |key, value|
-      Rails.logger.warn "Param #{key}: #{value}"
-    end
     @rows = lucky_numbers(@from.to_i..@to.to_i)
   end
 end

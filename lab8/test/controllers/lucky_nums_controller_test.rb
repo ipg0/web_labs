@@ -16,7 +16,7 @@ class LuckyNumsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get view containing a table with proper numbers' do
     get '/lucky_nums/view'
-    assert_response :successw
+    assert_response :success
     assert_match 'table', response.body
     200.times do
       current = generate_random_lucky
