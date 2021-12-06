@@ -4,5 +4,5 @@ function enableSpinner() {
 }
 
 document.addEventListener('turbolinks:load', () => {
-    document.getElementById("submit-btn").addEventListener('click', enableSpinner);
+    document.getElementById('form').addEventListener('submit', enableSpinner);
 });

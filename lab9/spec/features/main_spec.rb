@@ -1,0 +1,65 @@
+require 'json'
+require 'selenium-webdriver'
+require 'rspec'
+include RSpec::Expectations
+
+CHARS = ('0'..'9').to_a
+
+describe 'Main page' do
+  def random_lucky(len)
+    half = [0] * (3 - len) + CHARS.sample(len)
+    (half + half.shuffle).join
+  end
+
+  def element_present?(how, what)
+    @driver.find_element(how, what)
+    true
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    false
+  end
+
+  before(:each) do
+    @driver = Selenium::WebDriver.for :chrome
+    @base_url = 'http://localhost:3000/'
+    @accept_next_alert = true
+    @driver.manage.timeouts.implicit_wait = 1
+    @verification_errors = []
+  end
+
+  after(:each) do
+    @driver.quit
+    expect(@verification_errors).to be_empty
+  end
+
+  it 'should get input form' do
+    @driver.get 'http://localhost:3000/'
+    expect(element_present?(:xpath, '//form')).to eq true
+    expect(element_present?(:xpath, '//form/input[@id=\'from\']')).to eq true
+    expect(element_present?(:xpath, '//form/input[@id=\'to\']')).to eq true
+    expect(element_present?(:xpath, '//form/div/input[@id=\'submit-btn\']')).to eq true
+    expect(element_present?(:xpath, '//form/div/input[@id=\'clear-btn\']')).to eq true
+  end
+
+  it 'should get proper output from 0 to 9999 via AJAX' do
+    @driver.get 'http://localhost:3000/'
+    @driver.find_element(:id, 'from').click
+    @driver.find_element(:id, 'from').clear
+    @driver.find_element(:id, 'from').send_keys '0'
+    @driver.find_element(:id, 'to').click
+    @driver.find_element(:id, 'to').clear
+    @driver.find_element(:id, 'to').send_keys '9999'
+    @driver.find_element(:id, 'form').click
+    @driver.find_element(:id, 'submit-btn').click
+    nums = @driver.find_elements(:xpath, '//tbody[@id=\'result-table\']/tr/td[position()=2]').map(&:text)
+    expect(nums.size).to eq(220)
+    100.times do
+      expect(nums).to include(random_lucky(1))
+    end
+  end
+
+  def verify
+    yield
+  rescue ExpectationNotMetError => e
+    @verification_errors << e
+  end
+end

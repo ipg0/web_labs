@@ -27,7 +27,7 @@ class Lab5Test2 < MiniTest::Test
 
   def generate_expected_output(arr)
     arr.map do |string|
-      string.split.each.with_index { |word, index| determ_correct(word, index) }.join.rstrip
+      string.split.map.with_index { |word, index| determ_correct(word, index) }.join.rstrip
     end
   end
 
