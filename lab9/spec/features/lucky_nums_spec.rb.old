@@ -1,6 +1,4 @@
-require 'json'
-require 'selenium-webdriver'
-require 'rspec'
+require 'rails-helper'
 include RSpec::Expectations
 
 CHARS = ('0'..'9').to_a
@@ -32,7 +30,7 @@ describe 'Main page' do
   end
 
   it 'should get input form' do
-    @driver.get 'http://localhost:3000/'
+    @driver.get @base_url
     expect(element_present?(:xpath, '//form')).to eq true
     expect(element_present?(:xpath, '//form/input[@id=\'from\']')).to eq true
     expect(element_present?(:xpath, '//form/input[@id=\'to\']')).to eq true
@@ -41,7 +39,7 @@ describe 'Main page' do
   end
 
   it 'should get proper output from 0 to 9999 via AJAX' do
-    @driver.get 'http://localhost:3000/'
+    @driver.get @base_url
     @driver.find_element(:id, 'from').click
     @driver.find_element(:id, 'from').clear
     @driver.find_element(:id, 'from').send_keys '0'
@@ -50,7 +48,10 @@ describe 'Main page' do
     @driver.find_element(:id, 'to').send_keys '9999'
     @driver.find_element(:id, 'form').click
     @driver.find_element(:id, 'submit-btn').click
-    nums = @driver.find_elements(:xpath, '//tbody[@id=\'result-table\']/tr/td[position()=2]').map(&:text)
+    nums = @driver.find_element(:id, 'result-table')
+                  # .find_elements(:xpath, '//tbody[@id=\'result-table\']//td[2]')
+                  .find_elements(:css, 'tr>:nth-child(2)')
+                  .map(&:text)
     expect(nums.size).to eq(220)
     100.times do
       expect(nums).to include(random_lucky(1))

@@ -1,0 +1,24 @@
+<style>
+    input {
+        margin-bottom: 10px;
+    }
+</style>
+
+<%= form_tag(processor_output_url, method: "get", style: "width: 400px; padding: 50px") do |f| %>
+    <%= label_tag "from", "From" %>
+    <%= number_field_tag('from', 0, class: "form-control", min: 0, max: 999999, required: true) %>
+    <%= label_tag "to", "To" %>
+    <%= number_field_tag('to', 999999, class: "form-control", min: 0, max: 999999, required: true) %>
+    <%= label_tag("client_side", "XML rendering mode:", for: "radio-group") %>
+    <div id="radio-group" style="margin: 10px">
+        <div>
+            <%= radio_button_tag('format', 'xml', true, class: "form-check-input") %>
+            <%= label_tag("client_side", "Client-side (in browser)", for: "format_xml") %>
+        </div>
+        <div>
+            <%= radio_button_tag('format', 'html', true, class: "form-check-input") %>
+            <%= label_tag("server_side", "Server-side", for: "format_html") %>
+        </div>
+    </div>
+    <%= submit_tag("Calculate Lucky Numbers!", class: "btn btn-primary col-12") %>
+<% end %>
