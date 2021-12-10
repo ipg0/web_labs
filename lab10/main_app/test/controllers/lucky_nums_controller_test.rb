@@ -3,25 +3,12 @@ require 'test_helper'
 CHARS = ('0'..'9').to_a
 
 class LuckyNumsControllerTest < ActionDispatch::IntegrationTest
-  test 'should get input containing form' do
-    get '/'
-    assert_response :success
-    assert_match 'form', response.body
+  def get_xml(from, to)
+    get root_path, params: { from: from, to: to, format: 'xml' }
+    response.body
   end
 
-  def generate_random_lucky
-    half = CHARS.sample(3)
-    (half + half.shuffle).join
-  end
-
-  test 'should get view containing a table with proper numbers' do
-    get '/lucky_nums/view'
-    assert_response :success
-    assert_match 'table', response.body
-    200.times do
-      current = generate_random_lucky
-      p "matching #{current}..."
-      assert_match current, response.body
-    end
+  test 'should get different outputs when different inputs given' do
+    assert_not_equal get_xml('0', '9999'), get_xml('0', '99999')
   end
 end

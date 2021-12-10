@@ -4,7 +4,7 @@
     }
 </style>
 
-<%= form_tag(processor_output_url, method: "get", style: "width: 400px; padding: 50px") do |f| %>
+<%= form_tag(processor_output_path, method: "get", style: "width: 400px; padding: 50px") do |f| %>
     <%= label_tag "from", "From" %>
     <%= number_field_tag('from', 0, class: "form-control", min: 0, max: 999999, required: true) %>
     <%= label_tag "to", "To" %>
