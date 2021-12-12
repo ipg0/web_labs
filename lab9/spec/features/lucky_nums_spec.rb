@@ -10,7 +10,7 @@ def random_lucky(len)
 end
 
 def submit_form(from, to)
-  visit '/'
+  visit root_path
   fill_in 'from', with: from
   fill_in 'to', with: to
   click_button 'Calculate Lucky Numbers!'
@@ -19,7 +19,7 @@ end
 
 describe 'Lucky Nums calculator', type: :feature do
   it 'doesn\'t allow to input a string', js: true do
-    visit '/'
+    visit root_path
     fill_in 'from', with: 'a string'
     fill_in 'to', with: 'another string'
     expect(find_field('from').value).not_to eq 'a string'
