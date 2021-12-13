@@ -28,7 +28,7 @@ class LuckyNumsController < ApplicationController
       @rows = JSON.parse cached.result
     else
       @rows = lucky_numbers(@from..@to)
-      LuckyNumsResult.create from: @from, to: @to, result: JSON.unparse(@rows)
+      LuckyNumsResult.create from: @from, to: @to, result: @rows.to_json
     end
   end
 end

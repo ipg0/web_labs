@@ -6,12 +6,12 @@
     }
 </style>
 
-<%= form_tag(lucky_nums_view_path, remote: true, class: "col-2", method: "post", style: "padding: 50px", id: "form") do |f| %>
+<%= form_tag(lucky_nums_view_path, remote: true, method: "post", style: "width: 400px; padding: 50px", id: "form") do |f| %>
     <%= label_tag "from", "From" %>
-    <%= number_field_tag('from', 0, class: "form-control", min: 0, max: 999999, required: true) %>
+    <%= number_field_tag('from', 0, class: "form-control col-12", min: 0, max: 999999, required: true) %>
     <%= label_tag "to", "To" %>
-    <%= number_field_tag('to', 999999, class: "form-control", min: 0, max: 999999, required: true) %>
-    <div class="btn-group" role="group">
+    <%= number_field_tag('to', 999999, class: "form-control col-12", min: 0, max: 999999, required: true) %>
+    <div class="btn-group col-12" role="group">
         <%= submit_tag("Calculate Lucky Numbers!", class: "btn btn-primary", id: "submit-btn") %>
         <input type="button" value="Clear" class="btn btn-secondary" id="clear-btn">
     </div>

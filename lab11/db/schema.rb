@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_201154) do
+ActiveRecord::Schema.define(version: 2021_12_12_231117) do
 
   create_table "lucky_nums_results", force: :cascade do |t|
-    t.integer "from"
-    t.integer "to"
+    t.integer "from", null: false
+    t.integer "to", null: false
     t.text "result"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
