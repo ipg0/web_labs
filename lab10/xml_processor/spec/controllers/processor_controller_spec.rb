@@ -9,10 +9,10 @@ describe ProcessorController, type: :controller do
   end
 
   it 'responds with XML when client-side XSLT is selected' do
-    expect(submit_form('0', '9999', :xml).body).not_to include('<html>')
+    expect(submit_form('0', '9999', :xml).content_type).to include('xml')
   end
 
   it 'responds with HTML when server-side XSLT is selected' do
-    expect(submit_form('0', '9999', :html).body).to include('<html>')
+    expect(submit_form('0', '9999', :html).content_type).to include('html')
   end
 end

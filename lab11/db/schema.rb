@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_231117) do
+ActiveRecord::Schema.define(version: 2021_12_13_002157) do
 
-  create_table "lucky_nums_results", force: :cascade do |t|
+  create_table "lucky_nums_results", id: false, force: :cascade do |t|
     t.integer "from", null: false
     t.integer "to", null: false
     t.text "result"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["from", "to"], name: "index_lucky_nums_results_on_from_and_to", unique: true
   end
 
 end

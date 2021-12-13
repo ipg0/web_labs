@@ -15,6 +15,11 @@ describe LuckyNumsController, type: :controller do
     (half + half.shuffle).join
   end
 
+  it 'should respond with RSS' do
+    get :view, params: { from: '0', to: '9999', format: :rss }
+    expect(response.content_type).to include('xml')
+  end
+
   it 'should return different values when given different inputs' do
     expect(get_xml('0', '9999')).not_to eq(get_xml('0', '99999'))
   end

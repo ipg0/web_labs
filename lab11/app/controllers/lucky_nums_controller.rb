@@ -21,6 +21,12 @@ class LuckyNumsController < ApplicationController
          .map.with_index { |num, i| [i + 1, format('%06d', num), first_three(num)] }
   end
 
+  def data
+    respond_to do |format|
+      format.xml { render xml: LuckyNumsResult.all.map(&:serializable_hash) }
+    end
+  end
+
   def output
     @from = params['from'].to_i || 0
     @to = params['to'].to_i || 999_999
