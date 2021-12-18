@@ -1,0 +1,31 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <b><%= pluralize(user.errors.count, "error") %> in form:</b>
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><small>
+            <%= error.full_message %>
+          </small></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.label :username, "Username:" %>
+  <%= form.text_field(:username, class: "form-control col-12", required: true) %>
+  <%= form.label :email, "Email:" %>
+  <%= form.text_field(:email, class: "form-control col-12", required: true) %>
+  <%= form.label :password, "Password:" %>
+  <%= form.password_field(:password, class: "form-control col-12", required: true) %>
+  <% unless current_user&.admin %>
+    <%= form.label :password_confirmation, "Confirm password:" %>
+    <%= form.password_field(:password_confirmation, class: "form-control col-12", required: true) %>
+  <% end %>
+  <% if current_user&.admin %>
+    <div class="form-check">
+      <%= form.check_box :admin, class: "form-check-input" %>
+      <%= form.label :admin, "Is Admin", class: "form-check-label" %>
+    </div>
+  <% end %>
+  <%= form.submit("Submit", class: "btn btn-primary col-12") %>
+<% end %>

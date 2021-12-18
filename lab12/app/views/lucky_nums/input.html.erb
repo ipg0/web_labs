@@ -1,0 +1,20 @@
+<h1>Lucky Numbers Calculator</h1>
+<div style="width: 400px; padding: 50px">
+  <%= form_tag(lucky_nums_output_path, method: "post") do %>
+    <%= label_tag "from", "From" %>
+    <%= number_field_tag('from', 0, class: "form-control col-12", min: 0, max: 999999, required: true) %>
+    <%= label_tag "to", "To" %>
+    <%= number_field_tag('to', 999999, class: "form-control col-12", min: 0, max: 999999, required: true) %>
+    <%= submit_tag("Calculate Lucky Numbers!", class: "btn btn-primary col-12") %>
+  <% end %>
+
+  <% if @current_user.admin %>
+    <%= button_to 'Control Panel', users_path, method: :get, class: 'btn btn-outline-primary col-12' %>
+  <% else %>
+    <%= button_to 'Account settings', { controller: :users, action: :show, id: session[:current_user_id] },
+                  class: 'btn btn-outline-primary col-12', method: :get %>
+  <% end %>
+
+  <%= button_to 'Sign out', { controller: :sessions, action: :destroy, id: session[:session_id] },
+                method: :delete, class: 'btn btn-secondary col-12'%>
+</div>

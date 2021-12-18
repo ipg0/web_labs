@@ -1,0 +1,16 @@
+<% unless @current_user %>
+  <h1>Sign up</h1>
+<% else %>
+  <h1>New user</h1>
+<% end %>
+
+<div style="width: 400px; padding: 50px">
+  <%= render 'form', user: @user, current_user: @current_user%>
+  <% unless @current_user %>
+    <%= link_to 'Sign in', signin_path, class: "btn btn-outline-primary col-12" %>
+  <% else %>
+    <div class="btn-group col-12">
+      <%= render 'back', current_user: @current_user %>
+    </div>
+  <% end %>
+</div>

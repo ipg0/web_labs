@@ -1,0 +1,11 @@
+<h1>Edit user</h1>
+
+<div style="width: 400px; padding: 50px">
+  <%= render 'form', user: @user, current_user: @current_user %>
+  <div class="btn-group col-12">
+    <%= link_to 'Show', @user, class: 'btn btn-primary' %>
+    <%= render 'back', current_user: @current_user %>
+    <%= link_to 'Delete account', {controller: :users, action: :destroy, id: session[:current_user_id]},
+                  method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%>
+  </div>
+</div>

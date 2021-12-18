@@ -1,0 +1,32 @@
+<h1>Lucky Numbers from <%= @from %> to <%= @to %></h1>
+<table class="table table-hover">
+    <thead>
+        <tr scope="row">
+            <th scope="col">
+                Index
+            </th>
+            <th scope="col">
+                Number
+            </th>
+            <th scope="col">
+                Three Digit Sum
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <%- @rows.each do |cols| -%>    
+        <tr scope="row">
+            <th scope="col">
+                <%= cols[0] %>
+            </th>
+            <td>
+                <%= cols[1] %>
+            </td>
+            <td>
+                <%= cols[2] %>
+            </td>
+        </tr>
+        <%- end -%>
+    </tbody>
+
+</table>
