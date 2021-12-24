@@ -5,9 +5,10 @@ require 'rails_helper'
 DIGITS = ('0'..'9').to_a
 
 describe LuckyNumsController, type: :controller do
+  render_views
   def get_response(from, to)
     get :output, params: { from: from, to: to }
-    response
+    response.body
   end
 
   def random_lucky
