@@ -31,10 +31,10 @@ class LuckyNumsController < ApplicationController
     @from = params['from'].to_i || 0
     @to = params['to'].to_i || 999_999
     if (cached = LuckyNumsResult.find_by(from: @from, to: @to))
-      @rows = JSON.parse cached.result
+      @rows = cached.result
     else
       @rows = lucky_numbers(@from..@to)
-      LuckyNumsResult.create from: @from, to: @to, result: @rows.to_json
+      LuckyNumsResult.create from: @from, to: @to, result: @rows
     end
   end
 end
