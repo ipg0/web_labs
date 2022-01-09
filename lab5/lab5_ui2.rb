@@ -11,13 +11,11 @@ end
 
 def init_ui
   print 'How many strings do you wish to process? '
-  strings = []
-  gets.to_i.times do |index|
-    print "#{index}: "
-    strings << gets.chomp
+  strings = gets.to_i.times.map do |index|
+    print "#{index + 1}: "
+    gets.chomp
   end
-  puts "Input data: #{strings}"
-  puts "Output data: #{wrap_correct(strings)}"
+  puts "Input data: #{strings}\nOutput data: #{wrap_correct(strings)}"
 end
 
 init_ui
