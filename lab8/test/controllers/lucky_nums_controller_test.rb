@@ -18,10 +18,8 @@ class LuckyNumsControllerTest < ActionDispatch::IntegrationTest
     get '/lucky_nums/view'
     assert_response :success
     assert_match 'table', response.body
-    p assigns[:rows]
     200.times do
       current = generate_random_lucky
-      p "matching #{current}..."
       assert_match current, response.body
     end
   end

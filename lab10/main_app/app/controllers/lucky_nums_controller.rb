@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-MSG_NOT_ACCEPTABLE = '406: Not Acceptable: This page is only available in XML format'
-
 # Lucky Nums controller
 class LuckyNumsController < ApplicationController
   def last_three(num)
@@ -31,13 +29,8 @@ class LuckyNumsController < ApplicationController
   def view
     from = params['from'] || 0
     to = params['to'] || 999_999
-    result = lucky_numbers(from.to_i..to.to_i)
     respond_to do |format|
-      format.xml { render xml: result }
-      format.rss { render xml: result }
-      format.all do
-        render html: MSG_NOT_ACCEPTABLE, status: :not_acceptable
-      end
+      format.all { render xml: lucky_numbers(from.to_i..to.to_i) }
     end
   end
 end
