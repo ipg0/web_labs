@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# House
+# House class
 class House
   attr_reader :year_of_build, :total_area, :total_cost
 
@@ -23,7 +23,7 @@ class ExtendedHouse < House
 
   def initialize(year_of_build, total_area, total_cost)
     super
-    @cost_per_square_meter = @total_cost / @total_area
+    @cost_per_square_meter = total_cost / total_area
   end
 
   def to_s

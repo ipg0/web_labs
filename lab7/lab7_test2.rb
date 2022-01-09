@@ -7,7 +7,7 @@ require 'minitest/autorun'
 class Lab7Test2 < MiniTest::Test
   def test_hierarchy
     assert ExtendedHouse.superclass == House
-    assert ExtendedHouse.new(0, 0, 0).is_a? House
+    assert ExtendedHouse.new(1, 1, 1).is_a? House
   end
 
   def test_cpsm

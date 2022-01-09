@@ -2,7 +2,13 @@
 
 require 'minitest/autorun'
 require './lab6_3'
-require './lab6_ui3'
+
+def generate_points(number)
+  Array.new(number) do
+    x = rand(-100.0..100.0)
+    Point.new(x, yield(x))
+  end
+end
 
 # Testing neibr
 class Lab6Test2 < MiniTest::Test

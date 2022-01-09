@@ -9,6 +9,5 @@ Expr = Enumerator.new do |result|
 end
 
 def approx(eps)
-  p Expr
   Expr.take_while { |num| num.abs >= eps }.sum
 end

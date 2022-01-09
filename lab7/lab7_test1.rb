@@ -11,8 +11,8 @@ class Lab7Test1 < MiniTest::Test
   def test_write
     write_file("#{DIR}/F", 'F test')
     write_file("#{DIR}/G", 'G test')
-    assert File.open("#{DIR}/F").read == 'F test'
-    assert File.open("#{DIR}/G").read == 'G test'
+    assert File.read("#{DIR}/F") == 'F test'
+    assert File.read("#{DIR}/G") == 'G test'
   end
 
   def validate_prefix_match(fstr, gstr, pref)
@@ -44,9 +44,9 @@ class Lab7Test1 < MiniTest::Test
       strs = generate_with_common_prefix
       execute(DIR) { |_| strs.pop }
       validate_prefix(
-        File.open("#{DIR}/F").read,
-        File.open("#{DIR}/G").read,
-        File.open("#{DIR}/H").read
+        File.read("#{DIR}/F"),
+        File.read("#{DIR}/G"),
+        File.read("#{DIR}/H")
       )
     end
   end
