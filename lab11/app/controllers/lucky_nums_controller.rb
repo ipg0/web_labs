@@ -18,7 +18,7 @@ class LuckyNumsController < ApplicationController
 
   def lucky_numbers(range)
     range.select { |num| lucky? num }
-         .map.with_index { |num, i| [i + 1, format('%06d', num), first_three(num)] }
+         .map.with_index { |num, index| [index + 1, format('%06d', num), first_three(num)] }
   end
 
   def data
