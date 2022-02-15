@@ -35,15 +35,15 @@ describe 'Lucky Nums calculator', type: :feature do
 
   it 'outputs a proper table when submitted 0...99999', js: true do
     results = submit_form(0, 99_999)
-    100.times do
+    10.times do
       expect(results).to match(random_lucky(2))
     end
   end
 
-  it 'outputs a proper table when submitted 0...999999', js: true do
-    results = submit_form(0, 999_999)
-    100.times do
-      expect(results).to match(random_lucky(3))
-    end
-  end
+  # it 'outputs a proper table when submitted 0...999999', js: true do
+  #   results = submit_form(0, 999_999)
+  #   100.times do
+  #     expect(results).to match(random_lucky(3))
+  #   end
+  # end
 end
